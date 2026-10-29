@@ -1,0 +1,194 @@
+================================================================================
+LAB 2: API QUERIES & INSTRUCTIONS FOR ALL SCREENSHOTS
+================================================================================
+Student: Shaik Suheal (252U1R9145) - Section: CSE-GEN-AI 2C 112
+Course: Backend Development Fundamentals
+
+BEFORE YOU START:
+1. Open terminal and start the server:
+   cd backend_fundementals/lab-02
+   npm run dev
+
+2. Save all captured screenshots in:
+   backend_fundementals/lab-02/screenshots/
+
+================================================================================
+SCREENSHOT 1: get-all-books.png
+================================================================================
+Description: Retrieve all books from the SQLite database.
+Save as: screenshots/get-all-books.png
+
+[In Postman or Browser]:
+- Method: GET
+- URL: http://localhost:3000/books/
+- Headers: None
+- Body: None
+
+[In Terminal (cURL)]:
+curl -X GET http://localhost:3000/books/
+
+What to capture in screenshot:
+- Status Code: 200 OK
+- Response Body: The full JSON array containing all 10 books.
+
+
+================================================================================
+SCREENSHOT 2: get-single-book.png
+================================================================================
+Description: Retrieve a single book by ID using parameterized query.
+Save as: screenshots/get-single-book.png
+
+[In Postman or Browser]:
+- Method: GET
+- URL: http://localhost:3000/books/1/
+- Headers: None
+- Body: None
+
+[In Terminal (cURL)]:
+curl -X GET http://localhost:3000/books/1/
+
+What to capture in screenshot:
+- Status Code: 200 OK
+- Response Body: The JSON object for book ID 1 ("Atomic Habits").
+
+
+================================================================================
+SCREENSHOT 3: post-book.png
+================================================================================
+Description: Add a new book to the database.
+Save as: screenshots/post-book.png
+
+[In Postman]:
+- Method: POST
+- URL: http://localhost:3000/books/
+- Headers:
+    Content-Type: application/json
+- Body -> Select "raw" -> Select "JSON":
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "price": 550,
+  "pages": 464
+}
+
+[In Terminal (cURL)]:
+curl -X POST http://localhost:3000/books/ -H "Content-Type: application/json" -d "{\"title\":\"Clean Code\",\"author\":\"Robert C. Martin\",\"price\":550,\"pages\":464}"
+
+What to capture in screenshot:
+- Status Code: 201 Created
+- Response Body:
+  {
+    "message": "Book created successfully",
+    "bookId": 11,
+    "book": { ... }
+  }
+
+
+================================================================================
+SCREENSHOT 4: put-book.png
+================================================================================
+Description: Update all fields of an existing book.
+Save as: screenshots/put-book.png
+
+[In Postman]:
+- Method: PUT
+- URL: http://localhost:3000/books/1/
+- Headers:
+    Content-Type: application/json
+- Body -> Select "raw" -> Select "JSON":
+{
+  "title": "Atomic Habits (Updated Edition)",
+  "author": "James Clear",
+  "price": 499,
+  "pages": 330
+}
+
+[In Terminal (cURL)]:
+curl -X PUT http://localhost:3000/books/1/ -H "Content-Type: application/json" -d "{\"title\":\"Atomic Habits (Updated Edition)\",\"author\":\"James Clear\",\"price\":499,\"pages\":330}"
+
+What to capture in screenshot:
+- Status Code: 200 OK
+- Response Body:
+  {
+    "message": "Book updated successfully",
+    "book": { ... }
+  }
+
+
+================================================================================
+SCREENSHOT 5: delete-book.png
+================================================================================
+Description: Delete a book by ID.
+Save as: screenshots/delete-book.png
+
+[In Postman]:
+- Method: DELETE
+- URL: http://localhost:3000/books/1/
+- Headers: None
+- Body: None
+
+[In Terminal (cURL)]:
+curl -X DELETE http://localhost:3000/books/1/
+
+What to capture in screenshot:
+- Status Code: 200 OK
+- Response Body:
+  {
+    "message": "Book with ID 1 deleted successfully."
+  }
+
+
+================================================================================
+SCREENSHOT 6: error-not-found.png
+================================================================================
+Description: Query a non-existent book ID to show 404 Not Found error handling.
+Save as: screenshots/error-not-found.png
+
+[In Postman or Browser]:
+- Method: GET
+- URL: http://localhost:3000/books/999/
+- Headers: None
+- Body: None
+
+[In Terminal (cURL)]:
+curl -X GET http://localhost:3000/books/999/
+
+What to capture in screenshot:
+- Status Code: 404 Not Found
+- Response Body:
+  {
+    "error": "Book with ID 999 not found."
+  }
+
+
+================================================================================
+SCREENSHOT 7: database-records.png
+================================================================================
+Description: SQLite database verification table printed in terminal.
+Save as: screenshots/database-records.png
+
+[In Terminal]:
+1. Open terminal inside `backend_fundementals/lab-02`.
+2. Run command:
+   node init-db.js
+
+What to capture in screenshot:
+- The terminal output showing the ASCII table:
+  Verification: Total records in 'book' table: 10
+  ┌─────────┬────┬───────────────────────────┬────────────────────────┬───────┬───────┐
+  │ (index) │ id │ title                     │ author                 │ price │ pages │
+  ├─────────┼────┼───────────────────────────┼────────────────────────┼───────┼───────┤
+  │ 0       │ 1  │ 'Atomic Habits'           │ 'James Clear'          │ 450   │ 320   │
+  │ 1       │ 2  │ 'The Alchemist'           │ 'Paulo Coelho'         │ 300   │ 208   │
+  ...
+
+
+================================================================================
+USEFUL TIP: HOW TO RESET DATABASE TO CLEAN 10 BOOKS
+================================================================================
+If you updated or deleted books while taking screenshots and want to reset
+the database back to original fresh 10 books, just run:
+
+node init-db.js --reset
+================================================================================
+
