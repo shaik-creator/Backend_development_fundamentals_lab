@@ -46,18 +46,22 @@ Backend_development_fundamentals_lab/
 │       └── error.png
 └── lab-02/
     ├── .gitignore
-    ├── app.js                 # Express server with RESTful CRUD endpoints
-    ├── bookstore.db           # SQLite database file
-    ├── init-db.js             # Automated database creation & seed script
+    ├── server.js              # Express server with RESTful CRUD endpoints
+    ├── books.db               # SQLite database file
     ├── init.sql               # SQL schema and seed records
+    ├── seed.js                # Database initialization & seed script
     ├── package.json
     ├── package-lock.json
     ├── postman_collection.json# Postman API test collection
-    ├── README.md
     ├── requests.http          # REST client query file
-    ├── screenshot-queries.txt # Testing instructions & curl commands
     ├── test-api.js            # Automated endpoint testing script
+    ├── README.md
     └── screenshots/           # API response screenshots
+        ├── get-all-books.png
+        ├── get-single-book.png
+        ├── post-book.png
+        ├── put-book.png
+        └── delete-book.png
 ```
 
 ---
@@ -90,7 +94,7 @@ Each lab experiment is self-contained within its respective directory. To set up
      ```
    - **For Lab 02:**
      ```bash
-     npm run init-db  # Initialize SQLite database
+     npm run seed     # Initialize and seed SQLite database
      npm run dev      # Start development server with nodemon
      # or: npm start
      ```
