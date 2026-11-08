@@ -1,10 +1,11 @@
 const openDatabase = require("./database");
 const fs = require("fs");
+const path = require("path");
 
 const insertBooks = async () => {
   const db = await openDatabase();
 
-  const data = fs.readFileSync("./books.json", "utf8");
+  const data = fs.readFileSync(path.join(__dirname, "books.json"), "utf8");
   const books = JSON.parse(data);
 
   for (let i = 0; i < books.length; i++) {
