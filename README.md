@@ -22,6 +22,7 @@ Comprehensive laboratory experiments, implementations, and documentation for the
 | :---: | :--- | :--- | :--- | :---: |
 | **Lab 01** | **Node.js and Express Server** | Introduction to backend servers using Node.js built-in `http` module and Express.js routing, status codes, and error handling. | Node.js, Express.js | [View Lab 01](./lab-01/) |
 | **Lab 02** | **SQLite Database & CRUD Routes** | Relational database modeling, SQL DDL/DML, and RESTful CRUD API endpoints with parameterized queries using SQLite. | Node.js, Express.js, SQLite, sqlite3 | [View Lab 02](./lab-02/) |
+| **Lab 03** | **RESTful API Development & Validation** | Query parameters, sorting, pagination, filtering, input validation, and SQLite integration. | Node.js, Express.js, SQLite, sqlite3 | [View Lab 03](./lab-03/) |
 
 ---
 
@@ -62,6 +63,17 @@ Backend_development_fundamentals_lab/
         ├── post-book.png
         ├── put-book.png
         └── delete-book.png
+└── lab-03/
+    ├── .gitignore
+    ├── app.js                 # Express server with validation & query filtering
+    ├── books.db               # SQLite database file
+    ├── books.json             # Seed data in JSON format
+    ├── database.js            # SQLite database connection module
+    ├── insertBooks.js         # Script to insert sample books
+    ├── package.json
+    ├── package-lock.json
+    ├── README.md
+    └── Screenshots/           # API response & error validation screenshots
 ```
 
 ---
@@ -78,7 +90,7 @@ Each lab experiment is self-contained within its respective directory. To set up
 
 2. **Navigate into the desired lab directory:**
    ```bash
-   cd lab-01   # or cd lab-02
+   cd lab-01   # or cd lab-02 or cd lab-03
    ```
 
 3. **Install dependencies:**
@@ -97,6 +109,11 @@ Each lab experiment is self-contained within its respective directory. To set up
      npm run seed     # Initialize and seed SQLite database
      npm run dev      # Start development server with nodemon
      # or: npm start
+     ```
+   - **For Lab 03:**
+     ```bash
+     npm start        # Starts Express server at http://localhost:3000/
+     # or: node insertBooks.js (to re-seed sample books)
      ```
 
 Refer to the individual `README.md` file in each lab directory for full experiment details, API endpoint specifications, review questions, and screenshots.
